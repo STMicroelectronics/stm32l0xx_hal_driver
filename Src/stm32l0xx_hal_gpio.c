@@ -306,6 +306,24 @@ void HAL_GPIO_DeInit(GPIO_TypeDef  *GPIOx, uint32_t GPIO_Pin)
 
     if(iocurrent)
     {
+      /*------------------------- EXTI Mode Configuration --------------------*/
+      /* Clear the External Interrupt or Event for the current IO */
+      tmp = SYSCFG->EXTICR[position >> 2U];
+      tmp &= (((uint32_t)0x0FU) << (4U * (position & 0x03U)));
+      if(tmp == (GPIO_GET_INDEX(GPIOx) << (4U * (position & 0x03U))))
+      {
+        /* Clear EXTI line configuration */
+        EXTI->IMR &= ~((uint32_t)iocurrent);
+        EXTI->EMR &= ~((uint32_t)iocurrent);
+        
+        /* Clear Rising Falling edge configuration */
+        EXTI->RTSR &= ~((uint32_t)iocurrent);
+        EXTI->FTSR &= ~((uint32_t)iocurrent);
+        
+        tmp = ((uint32_t)0x0FU) << (4U * (position & 0x03U));
+        SYSCFG->EXTICR[position >> 2U] &= ~tmp;
+      }
+
       /*------------------------- GPIO Mode Configuration --------------------*/
       /* Configure IO Direction in Input Floting Mode */
       GPIOx->MODER |= (GPIO_MODER_MODE0 << (position * 2U));
@@ -322,24 +340,6 @@ void HAL_GPIO_DeInit(GPIO_TypeDef  *GPIOx, uint32_t GPIO_Pin)
       /* Deactivate the Pull-up oand Pull-down resistor for the current IO */
       GPIOx->PUPDR &= ~(GPIO_PUPDR_PUPD0 << (position * 2U));
       
-      /*------------------------- EXTI Mode Configuration --------------------*/
-      /* Clear the External Interrupt or Event for the current IO */
-      
-      tmp = SYSCFG->EXTICR[position >> 2U];
-      tmp &= (((uint32_t)0x0FU) << (4U * (position & 0x03U)));
-      if(tmp == (GPIO_GET_INDEX(GPIOx) << (4U * (position & 0x03U))))
-      {
-        tmp = ((uint32_t)0x0FU) << (4U * (position & 0x03U));
-        SYSCFG->EXTICR[position >> 2U] &= ~tmp;
-
-        /* Clear EXTI line configuration */
-        EXTI->IMR &= ~((uint32_t)iocurrent);
-        EXTI->EMR &= ~((uint32_t)iocurrent);
-
-        /* Clear Rising Falling edge configuration */
-        EXTI->RTSR &= ~((uint32_t)iocurrent);
-        EXTI->FTSR &= ~((uint32_t)iocurrent);
-      }
     }
      position++;
   }
