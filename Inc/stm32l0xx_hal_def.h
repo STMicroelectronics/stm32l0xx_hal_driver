@@ -28,7 +28,9 @@
 
 /* Includes ------------------------------------------------------------------*/
 #include "stm32l0xx.h"
+#if defined USE_LEGACY
 #include "Legacy/stm32_hal_legacy.h"
+#endif
 #include <stddef.h>
 
 /* Exported types ------------------------------------------------------------*/
