@@ -4,7 +4,7 @@
 
 ## Overview
 
-**STM32Cube** is an STMicroelectronics original initiative to ease the developers life by reducing efforts, time and cost.
+**STM32Cube** is an STMicroelectronics original initiative to ease developers' life by reducing efforts, time and cost.
 
 **STM32Cube** covers the overall STM32 products portfolio. It includes a comprehensive embedded software platform delivered for each STM32 series.
    * The CMSIS modules (core and device) corresponding to the ARM(tm) core implemented in this STM32 product.
@@ -25,8 +25,8 @@ This **stm32l0xx_hal_driver** MCU component repo is one element of the STM32Cube
 
 Copyright (c) 2016 STMicroelectronics.
 
-This software is licensed under terms that can be found in the LICENSE file in the root directory of this software component.
-If no LICENSE file comes with this software, it is provided AS-IS.
+This software component is licensed by STMicroelectronics under BSD 3-Clause license. You may not use this file except in compliance with the License. 
+You may obtain a copy of the License [here](https://opensource.org/licenses/BSD-3-Clause).
 
 ## Release note
 
@@ -51,4 +51,4 @@ The full **STM32CubeL0** MCU package is available [here](https://github.com/STMi
 
 If you have any issue with the **software content** of this repository, you can file an issue [here](https://github.com/STMicroelectronics/stm32l0xx_hal_driver/issues/new/choose).
 
-For any other question related to the product, the tools, the environment, you can submit a topic on the [ST Community/STM32 MCUs forum](https://community.st.com/s/topic/0TO0X000000BSqSWAW/stm32-mcus).
+For any other question related to the product, the tools, the environment, you can submit a topic on the [ST Community/STM32 MCUs forum](https://community.st.com/s/group/0F90X000000AXsASAW/stm32-mcus).
