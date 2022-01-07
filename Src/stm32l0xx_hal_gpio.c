@@ -235,23 +235,6 @@ void HAL_GPIO_Init(GPIO_TypeDef  *GPIOx, GPIO_InitTypeDef *GPIO_Init)
         SET_BIT(temp, (GPIO_GET_INDEX(GPIOx)) << (4 * (position & 0x03U)));
         SYSCFG->EXTICR[position >> 2U] = temp;
 
-        /* Clear EXTI line configuration */
-        temp = EXTI->IMR;
-        temp &= ~((uint32_t)iocurrent);
-        if ((GPIO_Init->Mode & EXTI_IT) != 0x00U)
-        {
-          temp |= iocurrent;
-        }
-        EXTI->IMR = temp;
-
-        temp = EXTI->EMR;
-        temp &= ~((uint32_t)iocurrent);
-        if ((GPIO_Init->Mode & EXTI_EVT) != 0x00U)
-        {
-          temp |= iocurrent;
-        }
-        EXTI->EMR = temp;
-
         /* Clear Rising Falling edge configuration */
         temp = EXTI->RTSR;
         temp &= ~((uint32_t)iocurrent);
@@ -268,6 +251,23 @@ void HAL_GPIO_Init(GPIO_TypeDef  *GPIOx, GPIO_InitTypeDef *GPIO_Init)
           temp |= iocurrent;
         }
         EXTI->FTSR = temp;
+
+        temp = EXTI->EMR;
+        temp &= ~((uint32_t)iocurrent);
+        if ((GPIO_Init->Mode & EXTI_EVT) != 0x00U)
+        {
+          temp |= iocurrent;
+        }
+        EXTI->EMR = temp;
+
+        /* Clear EXTI line configuration */
+        temp = EXTI->IMR;
+        temp &= ~((uint32_t)iocurrent);
+        if ((GPIO_Init->Mode & EXTI_IT) != 0x00U)
+        {
+          temp |= iocurrent;
+        }
+        EXTI->IMR = temp;
       }
     }
     position++;
@@ -312,8 +312,8 @@ void HAL_GPIO_DeInit(GPIO_TypeDef  *GPIOx, uint32_t GPIO_Pin)
         EXTI->EMR &= ~((uint32_t)iocurrent);
 
         /* Clear Rising Falling edge configuration */
-        EXTI->RTSR &= ~((uint32_t)iocurrent);
         EXTI->FTSR &= ~((uint32_t)iocurrent);
+        EXTI->RTSR &= ~((uint32_t)iocurrent);
         
         tmp = (0x0FUL) << (4U * (position & 0x03U));
         SYSCFG->EXTICR[position >> 2U] &= ~tmp;
