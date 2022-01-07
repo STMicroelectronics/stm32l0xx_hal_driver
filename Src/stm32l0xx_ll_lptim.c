@@ -189,11 +189,14 @@ void LL_LPTIM_Disable(LPTIM_TypeDef *LPTIMx)
   uint32_t tmpCFGR;
   uint32_t tmpCMP;
   uint32_t tmpARR;
+  uint32_t primask_bit;
 
   /* Check the parameters */
   assert_param(IS_LPTIM_INSTANCE(LPTIMx));
 
-  __disable_irq();
+  /* Enter critical section */  
+  primask_bit = __get_PRIMASK();
+  __set_PRIMASK(1) ;
 
   /********** Save LPTIM Config *********/
   /* Save LPTIM source clock */
@@ -271,7 +274,8 @@ void LL_LPTIM_Disable(LPTIM_TypeDef *LPTIMx)
   LPTIMx->IER = tmpIER;
   LPTIMx->CFGR = tmpCFGR;
 
-  __enable_irq();
+  /* Exit critical section: restore previous priority mask */
+  __set_PRIMASK(primask_bit);
 }
 
 /**

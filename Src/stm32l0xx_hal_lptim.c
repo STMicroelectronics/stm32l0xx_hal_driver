@@ -2349,8 +2349,11 @@ void LPTIM_Disable(LPTIM_HandleTypeDef *hlptim)
   uint32_t tmpCFGR;
   uint32_t tmpCMP;
   uint32_t tmpARR;
+  uint32_t primask_bit;
 
-  __disable_irq();
+   /* Enter critical section */  
+   primask_bit = __get_PRIMASK();
+  __set_PRIMASK(1) ;
 
   /*********** Save LPTIM Config ***********/
   /* Save LPTIM source clock */
@@ -2438,7 +2441,8 @@ void LPTIM_Disable(LPTIM_HandleTypeDef *hlptim)
   hlptim->Instance->IER = tmpIER;
   hlptim->Instance->CFGR = tmpCFGR;
 
-  __enable_irq();
+  /* Exit critical section: restore previous priority mask */
+  __set_PRIMASK(primask_bit);
 }
 /**
   * @}
