@@ -402,6 +402,9 @@
   */
 
 /* Private macro -------------------------------------------------------------*/
+/* Macro to get remaining data to transfer on DMA side */
+#define I2C_GET_DMA_REMAIN_DATA(__HANDLE__)     __HAL_DMA_GET_COUNTER(__HANDLE__)
+
 /* Private variables ---------------------------------------------------------*/
 /* Private function prototypes -----------------------------------------------*/
 
@@ -5190,7 +5193,7 @@ static HAL_StatusTypeDef I2C_Slave_ISR_DMA(struct __I2C_HandleTypeDef *hi2c, uin
       {
         if (I2C_CHECK_IT_SOURCE(ITSources, I2C_CR1_RXDMAEN) != RESET)
         {
-          if (__HAL_DMA_GET_COUNTER(hi2c->hdmarx) == 0U)
+          if (I2C_GET_DMA_REMAIN_DATA(hi2c->hdmarx) == 0U)
           {
             treatdmanack = 1U;
           }
@@ -5202,7 +5205,7 @@ static HAL_StatusTypeDef I2C_Slave_ISR_DMA(struct __I2C_HandleTypeDef *hi2c, uin
       {
         if (I2C_CHECK_IT_SOURCE(ITSources, I2C_CR1_TXDMAEN) != RESET)
         {
-          if (__HAL_DMA_GET_COUNTER(hi2c->hdmatx) == 0U)
+          if (I2C_GET_DMA_REMAIN_DATA(hi2c->hdmatx) == 0U)
           {
             treatdmanack = 1U;
           }
@@ -5813,7 +5816,7 @@ static void I2C_ITSlaveCplt(I2C_HandleTypeDef *hi2c, uint32_t ITFlags)
 
     if (hi2c->hdmatx != NULL)
     {
-      hi2c->XferCount = (uint16_t)__HAL_DMA_GET_COUNTER(hi2c->hdmatx);
+      hi2c->XferCount = (uint16_t)I2C_GET_DMA_REMAIN_DATA(hi2c->hdmatx);
     }
   }
   else if (I2C_CHECK_IT_SOURCE(tmpcr1value, I2C_CR1_RXDMAEN) != RESET)
@@ -5823,7 +5826,7 @@ static void I2C_ITSlaveCplt(I2C_HandleTypeDef *hi2c, uint32_t ITFlags)
 
     if (hi2c->hdmarx != NULL)
     {
-      hi2c->XferCount = (uint16_t)__HAL_DMA_GET_COUNTER(hi2c->hdmarx);
+      hi2c->XferCount = (uint16_t)I2C_GET_DMA_REMAIN_DATA(hi2c->hdmarx);
     }
   }
   else
@@ -6286,7 +6289,7 @@ static void I2C_DMASlaveReceiveCplt(DMA_HandleTypeDef *hdma)
   I2C_HandleTypeDef *hi2c = (I2C_HandleTypeDef *)(((DMA_HandleTypeDef *)hdma)->Parent);
   uint32_t tmpoptions = hi2c->XferOptions;
 
-  if ((__HAL_DMA_GET_COUNTER(hi2c->hdmarx) == 0U) && \
+  if ((I2C_GET_DMA_REMAIN_DATA(hi2c->hdmarx) == 0U) && \
       (tmpoptions != I2C_NO_OPTION_FRAME))
   {
     /* Disable DMA Request */
