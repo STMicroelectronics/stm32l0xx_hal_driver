@@ -3765,6 +3765,9 @@ HAL_StatusTypeDef HAL_I2C_Master_Seq_Receive_DMA(I2C_HandleTypeDef *hi2c, uint16
 HAL_StatusTypeDef HAL_I2C_Slave_Seq_Transmit_IT(I2C_HandleTypeDef *hi2c, uint8_t *pData, uint16_t Size,
                                                 uint32_t XferOptions)
 {
+  /* Declaration of tmp to prevent undefined behavior of volatile usage */
+  uint32_t tmp;
+
   /* Check the parameters */
   assert_param(IS_I2C_TRANSFER_OPTIONS_REQUEST(XferOptions));
 
@@ -3824,7 +3827,8 @@ HAL_StatusTypeDef HAL_I2C_Slave_Seq_Transmit_IT(I2C_HandleTypeDef *hi2c, uint8_t
     hi2c->XferOptions = XferOptions;
     hi2c->XferISR     = I2C_Slave_ISR_IT;
 
-    if (I2C_GET_DIR(hi2c) == I2C_DIRECTION_RECEIVE)
+    tmp = __HAL_I2C_GET_FLAG(hi2c, I2C_FLAG_ADDR);
+    if ((tmp != RESET) && (I2C_GET_DIR(hi2c) == I2C_DIRECTION_RECEIVE))
     {
       /* Clear ADDR flag after prepare the transfer parameters */
       /* This action will generate an acknowledge to the Master */
@@ -3861,6 +3865,9 @@ HAL_StatusTypeDef HAL_I2C_Slave_Seq_Transmit_IT(I2C_HandleTypeDef *hi2c, uint8_t
 HAL_StatusTypeDef HAL_I2C_Slave_Seq_Transmit_DMA(I2C_HandleTypeDef *hi2c, uint8_t *pData, uint16_t Size,
                                                  uint32_t XferOptions)
 {
+  /* Declaration of tmp to prevent undefined behavior of volatile usage */
+  uint32_t tmp;
+
   HAL_StatusTypeDef dmaxferstatus;
 
   /* Check the parameters */
@@ -4002,7 +4009,8 @@ HAL_StatusTypeDef HAL_I2C_Slave_Seq_Transmit_DMA(I2C_HandleTypeDef *hi2c, uint8_
       return HAL_ERROR;
     }
 
-    if (I2C_GET_DIR(hi2c) == I2C_DIRECTION_RECEIVE)
+    tmp = __HAL_I2C_GET_FLAG(hi2c, I2C_FLAG_ADDR);
+    if ((tmp != RESET) && (I2C_GET_DIR(hi2c) == I2C_DIRECTION_RECEIVE))
     {
       /* Clear ADDR flag after prepare the transfer parameters */
       /* This action will generate an acknowledge to the Master */
@@ -4042,6 +4050,9 @@ HAL_StatusTypeDef HAL_I2C_Slave_Seq_Transmit_DMA(I2C_HandleTypeDef *hi2c, uint8_
 HAL_StatusTypeDef HAL_I2C_Slave_Seq_Receive_IT(I2C_HandleTypeDef *hi2c, uint8_t *pData, uint16_t Size,
                                                uint32_t XferOptions)
 {
+  /* Declaration of tmp to prevent undefined behavior of volatile usage */
+  uint32_t tmp;
+
   /* Check the parameters */
   assert_param(IS_I2C_TRANSFER_OPTIONS_REQUEST(XferOptions));
 
@@ -4101,7 +4112,8 @@ HAL_StatusTypeDef HAL_I2C_Slave_Seq_Receive_IT(I2C_HandleTypeDef *hi2c, uint8_t 
     hi2c->XferOptions = XferOptions;
     hi2c->XferISR     = I2C_Slave_ISR_IT;
 
-    if (I2C_GET_DIR(hi2c) == I2C_DIRECTION_TRANSMIT)
+    tmp = __HAL_I2C_GET_FLAG(hi2c, I2C_FLAG_ADDR);
+    if ((tmp != RESET) && (I2C_GET_DIR(hi2c) == I2C_DIRECTION_TRANSMIT))
     {
       /* Clear ADDR flag after prepare the transfer parameters */
       /* This action will generate an acknowledge to the Master */
@@ -4138,6 +4150,8 @@ HAL_StatusTypeDef HAL_I2C_Slave_Seq_Receive_IT(I2C_HandleTypeDef *hi2c, uint8_t 
 HAL_StatusTypeDef HAL_I2C_Slave_Seq_Receive_DMA(I2C_HandleTypeDef *hi2c, uint8_t *pData, uint16_t Size,
                                                 uint32_t XferOptions)
 {
+  /* Declaration of tmp to prevent undefined behavior of volatile usage */
+  uint32_t tmp;
   HAL_StatusTypeDef dmaxferstatus;
 
   /* Check the parameters */
@@ -4279,7 +4293,8 @@ HAL_StatusTypeDef HAL_I2C_Slave_Seq_Receive_DMA(I2C_HandleTypeDef *hi2c, uint8_t
       return HAL_ERROR;
     }
 
-    if (I2C_GET_DIR(hi2c) == I2C_DIRECTION_TRANSMIT)
+    tmp = __HAL_I2C_GET_FLAG(hi2c, I2C_FLAG_ADDR);
+    if ((tmp != RESET) && (I2C_GET_DIR(hi2c) == I2C_DIRECTION_TRANSMIT))
     {
       /* Clear ADDR flag after prepare the transfer parameters */
       /* This action will generate an acknowledge to the Master */
