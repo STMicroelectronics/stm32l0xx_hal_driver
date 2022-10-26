@@ -825,36 +825,31 @@ void HAL_FLASHEx_DATAEEPROM_DisableFixedTimeProgram(void)
 static HAL_StatusTypeDef FLASH_OB_RDPConfig(uint8_t OB_RDP)
 {
   HAL_StatusTypeDef status = HAL_OK;
-  uint32_t tmp1 = 0U, tmp2 = 0U, tmp3 = 0U;
-  
+  uint32_t tmp1, tmp2;
+
   /* Check the parameters */
   assert_param(IS_OB_RDP(OB_RDP));
-  
-  tmp1 = (uint32_t)(OB->RDP & FLASH_OPTR_RDPROT);
-  
-#if defined(FLASH_OPTR_WPRMOD)
-    /* Mask WPRMOD bit */
-    tmp3 = (uint32_t)(OB->RDP & FLASH_OPTR_WPRMOD);
-#endif
 
-    /* calculate the option byte to write */
-    tmp1 = (~((uint32_t)(OB_RDP | tmp3)));
-    tmp2 = (uint32_t)(((uint32_t)((uint32_t)(tmp1) << 16U)) | ((uint32_t)(OB_RDP | tmp3)));
+  tmp1 = (uint32_t)(OB->RDP & ((~FLASH_OPTR_RDPROT) & 0x0000FFFF));
+
+  /* Calculate the option byte to write */
+  tmp1 |= (uint32_t)(OB_RDP);
+  tmp2 = (uint32_t)(((uint32_t)((uint32_t)(~tmp1) << 16U)) | tmp1);
+
+  /* Wait for last operation to be completed */
+  status = FLASH_WaitForLastOperation(FLASH_TIMEOUT_VALUE);
+
+  if(status == HAL_OK)
+  {
+    /* Clean the error context */
+    pFlash.ErrorCode = HAL_FLASH_ERROR_NONE;
+
+    /* program read protection level */
+    OB->RDP = tmp2;
 
     /* Wait for last operation to be completed */
     status = FLASH_WaitForLastOperation(FLASH_TIMEOUT_VALUE);
-
-    if(status == HAL_OK)
-    {
-      /* Clean the error context */
-      pFlash.ErrorCode = HAL_FLASH_ERROR_NONE;
-
-      /* program read protection level */
-      OB->RDP = tmp2;
-
-      /* Wait for last operation to be completed */
-      status = FLASH_WaitForLastOperation(FLASH_TIMEOUT_VALUE);
-    }
+  }
 
   /* Return the Read protection operation Status */
   return status;
