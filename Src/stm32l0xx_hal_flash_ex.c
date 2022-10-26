@@ -760,7 +760,7 @@ HAL_StatusTypeDef   HAL_FLASHEx_DATAEEPROM_Program(uint32_t TypeProgram, uint32_
       status = HAL_ERROR;
     }
 
-    if (status != HAL_OK)
+    if (status == HAL_OK)
     {
       /* Wait for last operation to be completed */
       status = FLASH_WaitForLastOperation(FLASH_TIMEOUT_VALUE);
