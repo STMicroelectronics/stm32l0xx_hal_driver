@@ -314,14 +314,14 @@ void HAL_GPIO_DeInit(GPIO_TypeDef  *GPIOx, uint32_t GPIO_Pin)
         /* Clear Rising Falling edge configuration */
         EXTI->FTSR &= ~((uint32_t)iocurrent);
         EXTI->RTSR &= ~((uint32_t)iocurrent);
-        
+
         tmp = (0x0FUL) << (4U * (position & 0x03U));
         SYSCFG->EXTICR[position >> 2U] &= ~tmp;
       }
 
       /*------------------------- GPIO Mode Configuration --------------------*/
-      /* Configure IO Direction in Input Floting Mode */
-      GPIOx->MODER |= (GPIO_MODER_MODE0 << (position * 2U));
+      /* Configure IO Direction in Analog Mode (reset state) */
+      GPIOx->MODER |= (GPIO_MODE_ANALOG << (position * 2U));
 
       /* Configure the default Alternate Function in current IO */
       GPIOx->AFR[position >> 3U] &= ~(0xFUL << ((uint32_t)(position & 0x07UL) * 4U));
