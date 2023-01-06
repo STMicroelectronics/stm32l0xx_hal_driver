@@ -358,6 +358,9 @@ void HAL_MPU_ConfigRegion(MPU_Region_InitTypeDef *MPU_Init)
   assert_param(IS_MPU_REGION_NUMBER(MPU_Init->Number));
   assert_param(IS_MPU_REGION_ENABLE(MPU_Init->Enable));
 
+  /* Follow ARM recommendation with Data Memory Barrier prior to MPU configuration */
+  __DMB();
+
   /* Set the Region number */
   MPU->RNR = MPU_Init->Number;
 
