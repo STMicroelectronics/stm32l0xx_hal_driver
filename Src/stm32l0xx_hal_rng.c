@@ -307,8 +307,6 @@ HAL_StatusTypeDef HAL_RNG_RegisterCallback(RNG_HandleTypeDef *hrng, HAL_RNG_Call
     hrng->ErrorCode = HAL_RNG_ERROR_INVALID_CALLBACK;
     return HAL_ERROR;
   }
-  /* Process locked */
-  __HAL_LOCK(hrng);
 
   if (HAL_RNG_STATE_READY == hrng->State)
   {
@@ -362,14 +360,12 @@ HAL_StatusTypeDef HAL_RNG_RegisterCallback(RNG_HandleTypeDef *hrng, HAL_RNG_Call
     status =  HAL_ERROR;
   }
 
-  /* Release Lock */
-  __HAL_UNLOCK(hrng);
   return status;
 }
 
 /**
   * @brief  Unregister an RNG Callback
-  *         RNG callabck is redirected to the weak predefined callback
+  *         RNG callback is redirected to the weak predefined callback
   * @param  hrng RNG handle
   * @param  CallbackID ID of the callback to be unregistered
   *         This parameter can be one of the following values:
@@ -382,8 +378,6 @@ HAL_StatusTypeDef HAL_RNG_UnRegisterCallback(RNG_HandleTypeDef *hrng, HAL_RNG_Ca
 {
   HAL_StatusTypeDef status = HAL_OK;
 
-  /* Process locked */
-  __HAL_LOCK(hrng);
 
   if (HAL_RNG_STATE_READY == hrng->State)
   {
@@ -437,8 +431,6 @@ HAL_StatusTypeDef HAL_RNG_UnRegisterCallback(RNG_HandleTypeDef *hrng, HAL_RNG_Ca
     status =  HAL_ERROR;
   }
 
-  /* Release Lock */
-  __HAL_UNLOCK(hrng);
   return status;
 }
 
@@ -864,3 +856,4 @@ uint32_t HAL_RNG_GetError(RNG_HandleTypeDef *hrng)
 /**
   * @}
   */
+

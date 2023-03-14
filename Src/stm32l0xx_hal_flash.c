@@ -9,17 +9,6 @@
   *           + Memory Control functions 
   *           + Peripheral State functions
   *         
-  ******************************************************************************
-  * @attention
-  *
-  * Copyright (c) 2016 STMicroelectronics.
-  * All rights reserved.
-  *
-  * This software is licensed under terms that can be found in the LICENSE file
-  * in the root directory of this software component.
-  * If no LICENSE file comes with this software, it is provided AS-IS.
-  *
-  ******************************************************************************
   @verbatim
   ==============================================================================
                         ##### FLASH peripheral features #####
@@ -147,6 +136,15 @@
 
   @endverbatim
   ******************************************************************************
+  * @attention
+  *
+  * Copyright (c) 2016 STMicroelectronics.
+  * All rights reserved.
+  *
+  * This software is licensed under terms that can be found in the LICENSE file in
+  * the root directory of this software component.
+  * If no LICENSE file comes with this software, it is provided AS-IS.
+  ******************************************************************************  
   */
 
 /* Includes ------------------------------------------------------------------*/
@@ -196,7 +194,6 @@ FLASH_ProcessTypeDef pFlash;
   * @{
   */
 static  void   FLASH_SetErrorCode(void);
-extern void    FLASH_PageErase(uint32_t PageAddress);
 /**
   * @}
   */
@@ -283,17 +280,14 @@ HAL_StatusTypeDef HAL_FLASH_Program_IT(uint32_t TypeProgram, uint32_t Address, u
 
   /* Enable End of FLASH Operation and Error source interrupts */
   __HAL_FLASH_ENABLE_IT(FLASH_IT_EOP | FLASH_IT_ERR);
-  
+
   pFlash.Address = Address;
   pFlash.ProcedureOnGoing = FLASH_PROC_PROGRAM;
   /* Clean the error context */
   pFlash.ErrorCode = HAL_FLASH_ERROR_NONE;
+  /* Program word (32-bit) at a specified address. */
+  *(__IO uint32_t *)Address = Data;
 
-  if(TypeProgram == FLASH_TYPEPROGRAM_WORD)
-  {
-    /* Program word (32-bit) at a specified address. */
-    *(__IO uint32_t *)Address = Data;
-  }
   return status;
 }
 
@@ -765,3 +759,4 @@ static void FLASH_SetErrorCode(void)
 /**
   * @}
   */
+

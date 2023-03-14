@@ -373,8 +373,9 @@ typedef struct
   * @param  __BAUDRATE__ Baud Rate value to achieve
   * @retval LPUARTDIV value to be used for BRR register filling
   */
-#define __LL_LPUART_DIV(__PERIPHCLK__, __BAUDRATE__) (uint32_t)(((((uint64_t)(__PERIPHCLK__)*LPUART_LPUARTDIV_FREQ_MUL) + (uint32_t)((__BAUDRATE__)/2U))/(__BAUDRATE__))\
-                                                                & LPUART_BRR_MASK)
+#define __LL_LPUART_DIV(__PERIPHCLK__, __BAUDRATE__) (uint32_t)\
+  (((((uint64_t)(__PERIPHCLK__)*LPUART_LPUARTDIV_FREQ_MUL) + (uint32_t)((__BAUDRATE__)/2U))/(__BAUDRATE__)) \
+   & LPUART_BRR_MASK)
 
 /**
   * @}
@@ -1563,7 +1564,6 @@ __STATIC_INLINE void LL_LPUART_ClearFlag_IDLE(USART_TypeDef *LPUARTx)
   WRITE_REG(LPUARTx->ICR, USART_ICR_IDLECF);
 }
 
-
 /**
   * @brief  Clear Transmission Complete Flag
   * @rmtoll ICR          TCCF          LL_LPUART_ClearFlag_TC
@@ -2200,3 +2200,4 @@ void        LL_LPUART_StructInit(LL_LPUART_InitTypeDef *LPUART_InitStruct);
 #endif
 
 #endif /* STM32L0xx_LL_LPUART_H */
+

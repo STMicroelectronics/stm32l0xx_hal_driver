@@ -14,7 +14,7 @@
   * If no LICENSE file comes with this software, it is provided AS-IS.
   *
   ******************************************************************************
-  */
+  */ 
 
 /* Define to prevent recursive inclusion -------------------------------------*/
 #ifndef __STM32L0xx_HAL_CRYP_H
@@ -93,9 +93,9 @@ typedef struct
 
   uint8_t                     *pCrypOutBuffPtr; /*!< Pointer to CRYP processing (encryption, decryption,...) buffer */
 
-  __IO uint16_t               CrypInCount;      /*!< Counter of inputed data */
+  __IO uint16_t               CrypInCount;      /*!< Counter of inputted data */
 
-  __IO uint16_t               CrypOutCount;     /*!< Counter of outputed data */
+  __IO uint16_t               CrypOutCount;     /*!< Counter of outputted data */
 
   HAL_StatusTypeDef           Status;           /*!< CRYP peripheral status */
 

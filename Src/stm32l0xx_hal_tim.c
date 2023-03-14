@@ -29,7 +29,6 @@
   *           + Commutation Event configuration with Interruption and DMA
   *           + TIM OCRef clear configuration
   *           + TIM External Clock configuration
-  *
   ******************************************************************************
   * @attention
   *
@@ -540,7 +539,7 @@ HAL_StatusTypeDef HAL_TIM_Base_Start_DMA(TIM_HandleTypeDef *htim, const uint32_t
   }
   else if (htim->State == HAL_TIM_STATE_READY)
   {
-    if ((pData == NULL) && (Length > 0U))
+    if ((pData == NULL) || (Length == 0U))
     {
       return HAL_ERROR;
     }
@@ -1039,7 +1038,7 @@ HAL_StatusTypeDef HAL_TIM_OC_Start_DMA(TIM_HandleTypeDef *htim, uint32_t Channel
   }
   else if (TIM_CHANNEL_STATE_GET(htim, Channel) == HAL_TIM_CHANNEL_STATE_READY)
   {
-    if ((pData == NULL) && (Length > 0U))
+    if ((pData == NULL) || (Length == 0U))
     {
       return HAL_ERROR;
     }
@@ -1667,7 +1666,7 @@ HAL_StatusTypeDef HAL_TIM_PWM_Start_DMA(TIM_HandleTypeDef *htim, uint32_t Channe
   }
   else if (TIM_CHANNEL_STATE_GET(htim, Channel) == HAL_TIM_CHANNEL_STATE_READY)
   {
-    if ((pData == NULL) && (Length > 0U))
+    if ((pData == NULL) || (Length == 0U))
     {
       return HAL_ERROR;
     }
@@ -2299,7 +2298,7 @@ HAL_StatusTypeDef HAL_TIM_IC_Start_DMA(TIM_HandleTypeDef *htim, uint32_t Channel
   }
   if (channel_state == HAL_TIM_CHANNEL_STATE_READY)
   {
-    if ((pData == NULL) && (Length > 0U))
+    if ((pData == NULL) || (Length == 0U))
     {
       return HAL_ERROR;
     }
@@ -2888,7 +2887,7 @@ HAL_StatusTypeDef HAL_TIM_OnePulse_Stop_IT(TIM_HandleTypeDef *htim, uint32_t Out
   * @param  sConfig TIM Encoder Interface configuration structure
   * @retval HAL status
   */
-HAL_StatusTypeDef HAL_TIM_Encoder_Init(TIM_HandleTypeDef *htim,  TIM_Encoder_InitTypeDef *sConfig)
+HAL_StatusTypeDef HAL_TIM_Encoder_Init(TIM_HandleTypeDef *htim, const TIM_Encoder_InitTypeDef *sConfig)
 {
   uint32_t tmpsmcr;
   uint32_t tmpccmr1;
@@ -3391,7 +3390,7 @@ HAL_StatusTypeDef HAL_TIM_Encoder_Start_DMA(TIM_HandleTypeDef *htim, uint32_t Ch
     }
     else if (channel_1_state == HAL_TIM_CHANNEL_STATE_READY)
     {
-      if ((pData1 == NULL) && (Length > 0U))
+      if ((pData1 == NULL) || (Length == 0U))
       {
         return HAL_ERROR;
       }
@@ -3413,7 +3412,7 @@ HAL_StatusTypeDef HAL_TIM_Encoder_Start_DMA(TIM_HandleTypeDef *htim, uint32_t Ch
     }
     else if (channel_2_state == HAL_TIM_CHANNEL_STATE_READY)
     {
-      if ((pData2 == NULL) && (Length > 0U))
+      if ((pData2 == NULL) || (Length == 0U))
       {
         return HAL_ERROR;
       }
@@ -3437,7 +3436,7 @@ HAL_StatusTypeDef HAL_TIM_Encoder_Start_DMA(TIM_HandleTypeDef *htim, uint32_t Ch
     else if ((channel_1_state == HAL_TIM_CHANNEL_STATE_READY)
              && (channel_2_state == HAL_TIM_CHANNEL_STATE_READY))
     {
-      if ((((pData1 == NULL) || (pData2 == NULL))) && (Length > 0U))
+      if ((((pData1 == NULL) || (pData2 == NULL))) || (Length == 0U))
       {
         return HAL_ERROR;
       }
@@ -4272,13 +4271,11 @@ HAL_StatusTypeDef HAL_TIM_OnePulse_ConfigChannel(TIM_HandleTypeDef *htim,  TIM_O
 HAL_StatusTypeDef HAL_TIM_DMABurst_WriteStart(TIM_HandleTypeDef *htim, uint32_t BurstBaseAddress,
                                               uint32_t BurstRequestSrc, const uint32_t *BurstBuffer, uint32_t  BurstLength)
 {
-  HAL_StatusTypeDef status = HAL_OK;
+  HAL_StatusTypeDef status;
 
-  if (status == HAL_OK)
-  {
-    status = HAL_TIM_DMABurst_MultiWriteStart(htim, BurstBaseAddress, BurstRequestSrc, BurstBuffer, BurstLength,
-                                              ((BurstLength) >> 8U) + 1U);
-  }
+  status = HAL_TIM_DMABurst_MultiWriteStart(htim, BurstBaseAddress, BurstRequestSrc, BurstBuffer, BurstLength,
+                                            ((BurstLength) >> 8U) + 1U);
+
 
 
   return status;
@@ -4584,13 +4581,11 @@ HAL_StatusTypeDef HAL_TIM_DMABurst_WriteStop(TIM_HandleTypeDef *htim, uint32_t B
 HAL_StatusTypeDef HAL_TIM_DMABurst_ReadStart(TIM_HandleTypeDef *htim, uint32_t BurstBaseAddress,
                                              uint32_t BurstRequestSrc, uint32_t  *BurstBuffer, uint32_t  BurstLength)
 {
-  HAL_StatusTypeDef status = HAL_OK;
+  HAL_StatusTypeDef status;
 
-  if (status == HAL_OK)
-  {
-    status = HAL_TIM_DMABurst_MultiReadStart(htim, BurstBaseAddress, BurstRequestSrc, BurstBuffer, BurstLength,
-                                             ((BurstLength) >> 8U) + 1U);
-  }
+  status = HAL_TIM_DMABurst_MultiReadStart(htim, BurstBaseAddress, BurstRequestSrc, BurstBuffer, BurstLength,
+                                           ((BurstLength) >> 8U) + 1U);
+
 
   return status;
 }
@@ -5576,8 +5571,6 @@ HAL_StatusTypeDef HAL_TIM_RegisterCallback(TIM_HandleTypeDef *htim, HAL_TIM_Call
   {
     return HAL_ERROR;
   }
-  /* Process locked */
-  __HAL_LOCK(htim);
 
   if (htim->State == HAL_TIM_STATE_READY)
   {
@@ -5741,9 +5734,6 @@ HAL_StatusTypeDef HAL_TIM_RegisterCallback(TIM_HandleTypeDef *htim, HAL_TIM_Call
     status = HAL_ERROR;
   }
 
-  /* Release Lock */
-  __HAL_UNLOCK(htim);
-
   return status;
 }
 
@@ -5780,9 +5770,6 @@ HAL_StatusTypeDef HAL_TIM_RegisterCallback(TIM_HandleTypeDef *htim, HAL_TIM_Call
 HAL_StatusTypeDef HAL_TIM_UnRegisterCallback(TIM_HandleTypeDef *htim, HAL_TIM_CallbackIDTypeDef CallbackID)
 {
   HAL_StatusTypeDef status = HAL_OK;
-
-  /* Process locked */
-  __HAL_LOCK(htim);
 
   if (htim->State == HAL_TIM_STATE_READY)
   {
@@ -5979,9 +5966,6 @@ HAL_StatusTypeDef HAL_TIM_UnRegisterCallback(TIM_HandleTypeDef *htim, HAL_TIM_Ca
     /* Return error status */
     status = HAL_ERROR;
   }
-
-  /* Release Lock */
-  __HAL_UNLOCK(htim);
 
   return status;
 }

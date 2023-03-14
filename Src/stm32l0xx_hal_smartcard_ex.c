@@ -196,3 +196,4 @@ HAL_StatusTypeDef HAL_SMARTCARDEx_DisableReceiverTimeOut(SMARTCARD_HandleTypeDef
   * @}
   */
 #endif /* !defined (STM32L010x4) && !defined (STM32L010x6) */
+

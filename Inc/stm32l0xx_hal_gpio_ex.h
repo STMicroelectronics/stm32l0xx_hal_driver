@@ -2499,3 +2499,5 @@ extern "C" {
 #endif
 
 #endif /* __STM32L0xx_HAL_GPIO_EX_H */
+
+

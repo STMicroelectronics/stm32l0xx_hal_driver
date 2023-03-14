@@ -66,7 +66,7 @@ extern "C" {
   * @param  __CLOCKSOURCE__ output variable.
   * @retval the USART clocking source, written in __CLOCKSOURCE__.
   */
-#if defined (STM32L051xx) || defined (STM32L052xx) || defined (STM32L053xx) || defined (STM32L062xx) || defined (STM32L063xx)
+#if defined(STM32L051xx) || defined(STM32L052xx) || defined(STM32L053xx) || defined(STM32L062xx) || defined(STM32L063xx)
 
 #define USART_GETCLOCKSOURCE(__HANDLE__,__CLOCKSOURCE__)       \
   do {                                                         \
@@ -118,7 +118,8 @@ extern "C" {
     }                                                          \
   } while(0U)
 
-#elif defined(STM32L071xx) || defined (STM32L081xx) || defined(STM32L072xx) || defined (STM32L082xx) || defined(STM32L073xx) || defined (STM32L083xx)
+#elif defined(STM32L071xx) || defined (STM32L081xx) || defined(STM32L072xx) || defined (STM32L082xx) \
+   || defined(STM32L073xx) || defined (STM32L083xx)
 
 #define USART_GETCLOCKSOURCE(__HANDLE__,__CLOCKSOURCE__)       \
   do {                                                         \
@@ -317,3 +318,4 @@ extern "C" {
 #endif
 
 #endif /* STM32L0xx_HAL_USART_EX_H */
+

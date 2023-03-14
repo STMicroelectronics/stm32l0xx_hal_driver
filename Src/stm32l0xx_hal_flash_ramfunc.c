@@ -6,18 +6,7 @@
   *          This file provides a Flash firmware functions which should be 
   *          executed from internal SRAM
   *
-  ******************************************************************************
-  * @attention
-  *
-  * Copyright (c) 2016 STMicroelectronics.
-  * All rights reserved.
-  *
-  * This software is licensed under terms that can be found in the LICENSE file
-  * in the root directory of this software component.
-  * If no LICENSE file comes with this software, it is provided AS-IS.
-  *
-  ******************************************************************************
-  @verbatim
+  *  @verbatim
 
     *** ARM Compiler ***
     --------------------
@@ -37,7 +26,16 @@
     [..] RAM functions are defined using a specific toolchain attribute
          "__attribute__((section(".RamFunc")))".
 
-  @endverbatim
+@endverbatim
+  ******************************************************************************
+  * @attention
+  *
+  * Copyright (c) 2016 STMicroelectronics.
+  * All rights reserved.
+  *
+  * This software is licensed under terms that can be found in the LICENSE file in
+  * the root directory of this software component.
+  * If no LICENSE file comes with this software, it is provided AS-IS.
   ******************************************************************************
   */
 
@@ -516,3 +514,5 @@ static __RAM_FUNC HAL_StatusTypeDef FLASHRAM_WaitForLastOperation(uint32_t Timeo
 /**
   * @}
   */
+
+

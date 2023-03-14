@@ -31,7 +31,7 @@ extern "C" {
   * @{
   */
 
-#if defined (USART1) || defined (USART2) || defined (USART4) || defined (USART5)
+#if defined(USART1) || defined(USART2) || defined(USART4) || defined(USART5)
 
 /** @defgroup USART_LL USART
   * @{
@@ -41,6 +41,12 @@ extern "C" {
 /* Private variables ---------------------------------------------------------*/
 
 /* Private constants ---------------------------------------------------------*/
+/** @defgroup USART_LL_Private_Constants USART Private Constants
+  * @{
+  */
+/**
+  * @}
+  */
 /* Private macros ------------------------------------------------------------*/
 #if defined(USE_FULL_LL_DRIVER)
 /** @defgroup USART_LL_Private_Macros USART Private Macros
@@ -1305,7 +1311,7 @@ __STATIC_INLINE void LL_USART_SetAutoBaudRateMode(USART_TypeDef *USARTx, uint32_
   *         @arg @ref LL_USART_AUTOBAUD_DETECT_ON_7F_FRAME
   *         @arg @ref LL_USART_AUTOBAUD_DETECT_ON_55_FRAME
   */
-__STATIC_INLINE uint32_t LL_USART_GetAutoBaudRateMode(USART_TypeDef *USARTx)
+__STATIC_INLINE uint32_t LL_USART_GetAutoBaudRateMode(const USART_TypeDef *USARTx)
 {
   return (uint32_t)(READ_BIT(USARTx->CR2, USART_CR2_ABRMODE));
 }
@@ -3746,3 +3752,4 @@ void        LL_USART_ClockStructInit(LL_USART_ClockInitTypeDef *USART_ClockInitS
 #endif
 
 #endif /* STM32L0xx_LL_USART_H */
+

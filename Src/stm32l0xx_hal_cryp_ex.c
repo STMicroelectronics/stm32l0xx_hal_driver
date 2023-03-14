@@ -18,8 +18,8 @@
   * in the root directory of this software component.
   * If no LICENSE file comes with this software, it is provided AS-IS.
   *
-  ******************************************************************************
-  */
+  ******************************************************************************  
+  */ 
 
 #if defined (STM32L021xx) || defined (STM32L041xx) || defined (STM32L062xx) || defined (STM32L063xx) || defined (STM32L081xx) || defined (STM32L082xx) || defined (STM32L083xx)
 /* Includes ------------------------------------------------------------------*/

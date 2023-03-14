@@ -8,17 +8,6 @@
   *           + Initialization and Configuration functions
   *           + Peripheral Control functions 
   *
-  ******************************************************************************
-  * @attention
-  *
-  * Copyright (c) 2016 STMicroelectronics.
-  * All rights reserved.
-  *
-  * This software is licensed under terms that can be found in the LICENSE file
-  * in the root directory of this software component.
-  * If no LICENSE file comes with this software, it is provided AS-IS.
-  *
-  ******************************************************************************
   @verbatim  
   ==============================================================================
                         ##### How to use this driver #####
@@ -73,6 +62,16 @@
    
   @endverbatim
   ******************************************************************************
+  * @attention
+  *
+  * Copyright (c) 2016 STMicroelectronics.
+  * All rights reserved.
+  *
+  * This software is licensed under terms that can be found in the LICENSE file in
+  * the root directory of this software component.
+  * If no LICENSE file comes with this software, it is provided AS-IS.
+  *
+  ******************************************************************************  
   */
 
 /* Includes ------------------------------------------------------------------*/
@@ -101,7 +100,7 @@
   */
 
 
-/** @addtogroup CORTEX_Exported_Functions_Group1 Initialization and de-initialization functions 
+/** @addtogroup CORTEX_Exported_Functions_Group1  
  *  @brief    Initialization and Configuration functions 
  *
 @verbatim    
@@ -413,3 +412,5 @@ void HAL_MPU_ConfigRegion(MPU_Region_InitTypeDef *MPU_Init)
 /**
   * @}
   */
+
+

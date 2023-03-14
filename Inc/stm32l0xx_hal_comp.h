@@ -53,7 +53,7 @@ typedef struct
                                     This parameter can be a value of @ref COMP_WindowMode */
 
   uint32_t Mode;               /*!< Set comparator operating mode to adjust power and speed.
-                                    Note: For the characteritics of comparator power modes
+                                    Note: For the characteristics of comparator power modes
                                           (propagation delay and power consumption), refer to device datasheet.
                                     This parameter can be a value of @ref COMP_PowerMode */
 
@@ -155,7 +155,7 @@ typedef  void (*pCOMP_CallbackTypeDef)(COMP_HandleTypeDef *hcomp); /*!< pointer 
 /** @defgroup COMP_PowerMode COMP power mode
   * @{
   */
-/* Note: For the characteritics of comparator power modes                     */
+/* Note: For the characteristics of comparator power modes                     */
 /*       (propagation delay and power consumption),                           */
 /*       refer to device datasheet.                                           */
 #define COMP_POWERMODE_MEDIUMSPEED     (COMP_CSR_COMP2SPEED)       /*!< COMP power mode to low power (indicated as "high speed" in reference manual) (only for COMP instance: COMP2) */
@@ -722,3 +722,4 @@ uint32_t              HAL_COMP_GetError(COMP_HandleTypeDef *hcomp);
 #endif
 
 #endif /* __STM32L0xx_HAL_COMP_H */
+

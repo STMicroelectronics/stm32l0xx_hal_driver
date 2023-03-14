@@ -6,11 +6,9 @@
   *          This file provides firmware functions to manage the following 
   *          functionalities of the COMP peripheral:
   *           + Initialization and de-initialization functions
-  *           + Start/Stop operation functions in polling mode
-  *           + Start/Stop operation functions in interrupt mode (through EXTI interrupt)
   *           + Peripheral control functions
   *           + Peripheral state functions
-  *         
+  *
   ******************************************************************************
   * @attention
   *
@@ -185,7 +183,7 @@
   (1) GPIO must be set to alternate function for comparator
   (2) Comparators output to timers is set in timers instances.
 
-  ******************************************************************************
+  ******************************************************************************  
   */
 
 #if !defined (STM32L010xB) && !defined (STM32L010x8) && !defined (STM32L010x6) && !defined (STM32L010x4)
@@ -369,7 +367,7 @@ HAL_StatusTypeDef HAL_COMP_Init(COMP_HandleTypeDef *hcomp)
     /* Set comparator output connection to LPTIM */
     if (hcomp->Init.LPTIMConnection != COMP_LPTIMCONNECTION_DISABLED)
     {
-      /* LPTIM connexion requested on COMP1 */
+      /* LPTIM connection requested on COMP1 */
       if ((hcomp->Instance) == COMP1)
       {
         /* Note : COMP1 can be connected to the input 1 of LPTIM if requested */
@@ -1065,3 +1063,4 @@ uint32_t HAL_COMP_GetError(COMP_HandleTypeDef *hcomp)
   */
 
 #endif /* !defined (STM32L010xB) && !defined (STM32L010x8) && !defined (STM32L010x6) && !defined (STM32L010x4) */
+

@@ -70,7 +70,8 @@ extern "C" {
   * @param  __CLOCKSOURCE__ output variable.
   * @retval IRDA clocking source, written in __CLOCKSOURCE__.
   */
-#if defined (STM32L031xx) || defined (STM32L041xx) || defined (STM32L011xx) || defined (STM32L021xx) || defined (STM32L010xB) || defined (STM32L010x8)
+#if defined (STM32L031xx) || defined (STM32L041xx) || defined (STM32L011xx) || defined (STM32L021xx) \
+ || defined (STM32L010xB) || defined (STM32L010x8)
 #define IRDA_GETCLOCKSOURCE(__HANDLE__,__CLOCKSOURCE__)       \
   do {                                                        \
     if((__HANDLE__)->Instance == USART2)                      \
@@ -121,7 +122,7 @@ extern "C" {
     }                                                         \
   } while(0U)
 
-#else /* (STM32L031xx) || defined (STM32L041xx) || (STM32L011xx) || defined (STM32L021xx) || defined (STM32L010xB) || defined (STM32L010x8)*/
+#else /* (STM32L031xx) || (STM32L041xx) || (STM32L011xx) || (STM32L021xx) || (STM32L010xB) || (STM32L010x8)*/
 
 #define IRDA_GETCLOCKSOURCE(__HANDLE__,__CLOCKSOURCE__) \
   do {                                                        \
@@ -269,3 +270,4 @@ extern "C" {
 #endif
 
 #endif /* STM32L0xx_HAL_IRDA_EX_H */
+

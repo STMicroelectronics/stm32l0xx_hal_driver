@@ -282,7 +282,7 @@ typedef enum
 #define __HAL_SYSCFG_REMAPMEMORY_SRAM()             MODIFY_REG(SYSCFG->CFGR1, SYSCFG_CFGR1_MEM_MODE, SYSCFG_CFGR1_MEM_MODE_0 | SYSCFG_CFGR1_MEM_MODE_1)
 
 /** @brief  Configuration of the DBG Low Power mode.
-  * @param  __DBGLPMODE__ bit field to indicate in wich Low Power mode DBG is still active.
+  * @param  __DBGLPMODE__ bit field to indicate in which Low Power mode DBG is still active.
   *         This parameter can be a value of
   *         - DBGMCU_SLEEP
   *         - DBGMCU_STOP
@@ -481,3 +481,6 @@ void HAL_SYSCFG_VREFINT_OutputSelect(uint32_t SYSCFG_Vrefint_OUTPUT);
 #endif
 
 #endif /* __STM32L0xx_HAL_H */
+
+
+

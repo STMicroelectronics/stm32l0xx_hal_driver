@@ -14,10 +14,9 @@
   * Copyright (c) 2016 STMicroelectronics.
   * All rights reserved.
   *
-  * This software is licensed under terms that can be found in the LICENSE file
-  * in the root directory of this software component.
+  * This software is licensed under terms that can be found in the LICENSE file in
+  * the root directory of this software component.
   * If no LICENSE file comes with this software, it is provided AS-IS.
-  *
   ******************************************************************************
   */
 
@@ -453,7 +452,7 @@ uint32_t HAL_RCCEx_GetPeriphCLKFreq(uint32_t PeriphClk)
       /* Clock not enabled for RTC */
       else
       {
-        frequency = 0U;
+        /* nothing to do: frequency already initialized to 0U */
       }
       break;
     }
@@ -503,7 +502,7 @@ uint32_t HAL_RCCEx_GetPeriphCLKFreq(uint32_t PeriphClk)
       }
       else /* RCC_USBCLKSOURCE_NONE */
       {
-          frequency = 0U;
+          /* nothing to do: frequency already initialized to 0U */
       }
       break;
     }
@@ -550,7 +549,7 @@ uint32_t HAL_RCCEx_GetPeriphCLKFreq(uint32_t PeriphClk)
       /* Clock not enabled for USART1*/
       else
       {
-        frequency = 0U;
+        /* nothing to do: frequency already initialized to 0U */
       }
       break;
     }
@@ -596,7 +595,7 @@ uint32_t HAL_RCCEx_GetPeriphCLKFreq(uint32_t PeriphClk)
       /* Clock not enabled for USART2*/
       else
       {
-        frequency = 0U;
+        /* nothing to do: frequency already initialized to 0U */
       }
       break;
     }
@@ -641,7 +640,7 @@ uint32_t HAL_RCCEx_GetPeriphCLKFreq(uint32_t PeriphClk)
       /* Clock not enabled for LPUART1*/
       else
       {
-        frequency = 0U;
+        /* nothing to do: frequency already initialized to 0U */
       }
       break;
     }
@@ -678,7 +677,7 @@ uint32_t HAL_RCCEx_GetPeriphCLKFreq(uint32_t PeriphClk)
       /* Clock not enabled for I2C1*/
       else
       {
-        frequency = 0U;
+        /* nothing to do: frequency already initialized to 0U */
       }
       break;
     }
@@ -693,7 +692,7 @@ uint32_t HAL_RCCEx_GetPeriphCLKFreq(uint32_t PeriphClk)
       }
       else
       {
-        frequency = 0U;
+        /* nothing to do: frequency already initialized to 0U */
       }
       break;
     }
@@ -733,7 +732,7 @@ uint32_t HAL_RCCEx_GetPeriphCLKFreq(uint32_t PeriphClk)
       /* Clock not enabled for I2C3*/
       else
       {
-        frequency = 0U;
+        /* nothing to do: frequency already initialized to 0U */
       }
       break;
     }
@@ -856,7 +855,7 @@ void HAL_RCCEx_DisableHSI48_VREFINT(void)
                 ##### Extended Clock Recovery System Control functions  #####
  ===============================================================================
     [..]
-      For devices with Clock Recovery System feature (CRS), RCC Extention HAL driver can be used as follows:
+      For devices with Clock Recovery System feature (CRS), RCC Extension HAL driver can be used as follows:
 
       (#) In System clock config, HSI48 needs to be enabled
 
@@ -1219,3 +1218,4 @@ __weak void HAL_RCCEx_CRS_ErrorCallback(uint32_t Error)
 /**
   * @}
   */
+

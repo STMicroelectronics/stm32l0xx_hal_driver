@@ -86,7 +86,7 @@
   )
 #endif
 
-/* Note: On this STM32 serie, comparator input minus parameters are           */
+/* Note: On this STM32 series, comparator input minus parameters are           */
 /*       the different depending on COMP instances.                           */
 #define IS_LL_COMP_INPUT_MINUS(__COMP_INSTANCE__, __INPUT_MINUS__)             \
   (((__COMP_INSTANCE__) == COMP1)                                              \
@@ -302,3 +302,4 @@ void LL_COMP_StructInit(LL_COMP_InitTypeDef *COMP_InitStruct)
   */
 
 #endif /* USE_FULL_LL_DRIVER */
+

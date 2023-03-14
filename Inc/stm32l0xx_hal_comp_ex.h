@@ -14,7 +14,7 @@
   * If no LICENSE file comes with this software, it is provided AS-IS.
   *
   ******************************************************************************
-  */
+  */ 
 
 /* Define to prevent recursive inclusion -------------------------------------*/
 #ifndef __STM32L0xx_HAL_COMP_EX_H
@@ -70,3 +70,5 @@ void HAL_COMPEx_DisableVREFINT(void);
 #endif
 
 #endif /* __STM32L0xx_HAL_COMP_EX_H */
+
+

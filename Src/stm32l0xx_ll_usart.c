@@ -31,7 +31,7 @@
   * @{
   */
 
-#if defined (USART1) || defined (USART2) || defined (USART4) || defined (USART5)
+#if defined(USART1) || defined(USART2) || defined(USART4) || defined(USART5)
 
 /** @addtogroup USART_LL
   * @{
@@ -40,6 +40,17 @@
 /* Private types -------------------------------------------------------------*/
 /* Private variables ---------------------------------------------------------*/
 /* Private constants ---------------------------------------------------------*/
+/** @addtogroup USART_LL_Private_Constants
+  * @{
+  */
+
+/* Definition of default baudrate value used for USART initialisation */
+#define USART_DEFAULT_BAUDRATE          (9600U)
+
+/**
+  * @}
+  */
+
 /* Private macros ------------------------------------------------------------*/
 /** @addtogroup USART_LL_Private_Macros
   * @{
@@ -302,7 +313,7 @@ ErrorStatus LL_USART_Init(USART_TypeDef *USARTx, const LL_USART_InitTypeDef *USA
 void LL_USART_StructInit(LL_USART_InitTypeDef *USART_InitStruct)
 {
   /* Set USART_InitStruct fields to default values */
-  USART_InitStruct->BaudRate            = 9600U;
+  USART_InitStruct->BaudRate            = USART_DEFAULT_BAUDRATE;
   USART_InitStruct->DataWidth           = LL_USART_DATAWIDTH_8B;
   USART_InitStruct->StopBits            = LL_USART_STOPBITS_1;
   USART_InitStruct->Parity              = LL_USART_PARITY_NONE ;
@@ -414,3 +425,5 @@ void LL_USART_ClockStructInit(LL_USART_ClockInitTypeDef *USART_ClockInitStruct)
   */
 
 #endif /* USE_FULL_LL_DRIVER */
+
+

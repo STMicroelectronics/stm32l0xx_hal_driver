@@ -5,11 +5,11 @@
   * @brief   HAL MSP module.
   *          This file template is located in the HAL folder and should be copied 
   *          to the user folder.
-  *         
+  *
   ******************************************************************************
   * @attention
   *
-  * Copyright (c) 2016 STMicroelectronics.
+  * Copyright (c) 2016 STMicroelectronics. 
   * All rights reserved.
   *
   * This software is licensed under terms that can be found in the LICENSE file
@@ -26,7 +26,7 @@
 
   @endverbatim
   ******************************************************************************
-  */
+  */ 
 
 /* Includes ------------------------------------------------------------------*/
 #include "stm32l0xx_hal.h"
@@ -102,3 +102,6 @@ void HAL_PPP_MspDeInit(void)
 /**
   * @}
   */
+
+
+

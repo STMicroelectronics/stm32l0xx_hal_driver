@@ -3,6 +3,7 @@
   * @file    stm32l0xx_ll_dma.h
   * @author  MCD Application Team
   * @brief   Header file of DMA LL module.
+  *
   ******************************************************************************
   * @attention
   *
@@ -960,7 +961,7 @@ __STATIC_INLINE uint32_t LL_DMA_GetDataLength(DMA_TypeDef *DMAx, uint32_t Channe
 /**
   * @brief  Configure the Source and Destination addresses.
   * @note   This API must not be called when the DMA channel is enabled.
-  * @note   Each IP using DMA provides an API to get directly the register adress (LL_PPP_DMA_GetRegAddr).
+  * @note   Each IP using DMA provides an API to get directly the register address (LL_PPP_DMA_GetRegAddr).
   * @rmtoll CPAR         PA            LL_DMA_ConfigAddresses\n
   *         CMAR         MA            LL_DMA_ConfigAddresses
   * @param  DMAx DMAx Instance
@@ -1184,7 +1185,7 @@ __STATIC_INLINE uint32_t LL_DMA_GetM2MDstAddress(DMA_TypeDef *DMAx, uint32_t Cha
   *         @arg @ref LL_DMA_CHANNEL_5
   *         @arg @ref LL_DMA_CHANNEL_6
   *         @arg @ref LL_DMA_CHANNEL_7
-  * @param  PeriphRequest This parameter can be one of the following values:
+  * @param  Request This parameter can be one of the following values:
   *         @arg @ref LL_DMA_REQUEST_0
   *         @arg @ref LL_DMA_REQUEST_1
   *         @arg @ref LL_DMA_REQUEST_2
@@ -2124,3 +2125,5 @@ void LL_DMA_StructInit(LL_DMA_InitTypeDef *DMA_InitStruct);
 #endif
 
 #endif /* STM32L0xx_LL_DMA_H */
+
+

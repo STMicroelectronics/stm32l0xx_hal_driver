@@ -7,7 +7,6 @@
   *          functionalities of the Timer Extended peripheral:
   *           + Time Master and Slave synchronization configuration
   *           + Timer remapping capabilities configuration
-  *
   ******************************************************************************
   * @attention
   *
@@ -397,7 +396,7 @@ HAL_StatusTypeDef HAL_TIMEx_RemapConfig(TIM_HandleTypeDef *htim, uint32_t Remap)
 
   /* Check parameters */
   assert_param(IS_TIM_REMAP(htim->Instance, Remap));
-  
+
   __HAL_LOCK(htim);
 
   /* Set the Timer remapping configuration */

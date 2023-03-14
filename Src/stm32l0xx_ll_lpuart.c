@@ -44,6 +44,9 @@
   * @{
   */
 
+/* Definition of default baudrate value used for LPUART initialisation */
+#define LPUART_DEFAULT_BAUDRATE          (9600U)
+
 /**
   * @}
   */
@@ -231,7 +234,7 @@ ErrorStatus LL_LPUART_Init(USART_TypeDef *LPUARTx, const LL_LPUART_InitTypeDef *
 void LL_LPUART_StructInit(LL_LPUART_InitTypeDef *LPUART_InitStruct)
 {
   /* Set LPUART_InitStruct fields to default values */
-  LPUART_InitStruct->BaudRate            = 9600U;
+  LPUART_InitStruct->BaudRate            = LPUART_DEFAULT_BAUDRATE;
   LPUART_InitStruct->DataWidth           = LL_LPUART_DATAWIDTH_8B;
   LPUART_InitStruct->StopBits            = LL_LPUART_STOPBITS_1;
   LPUART_InitStruct->Parity              = LL_LPUART_PARITY_NONE ;

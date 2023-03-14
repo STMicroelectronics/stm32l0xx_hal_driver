@@ -4,9 +4,8 @@
   * @author  MCD Application Team
   * @brief   Extended COMP HAL module driver.
   * @brief   This file provides firmware functions to manage voltage reference
-  *          VrefInt that must be specifically controled for comparator
+  *          VrefInt that must be specifically controlled for comparator
   *          instance COMP2.
-  *
   ******************************************************************************
   * @attention
   *
@@ -32,7 +31,7 @@
 
   @endverbatim
   ******************************************************************************
-  */
+  */ 
 
 #if !defined (STM32L010xB) && !defined (STM32L010x8) && !defined (STM32L010x6) && !defined (STM32L010x4)
 /* Includes ------------------------------------------------------------------*/

@@ -782,5 +782,3 @@ HAL_StatusTypeDef     LCD_WaitForSynchro(LCD_HandleTypeDef *hlcd);
 #endif
 
 #endif /* __STM32L0xx_HAL_LCD_H */
-
-/******************* (C) COPYRIGHT 2016 STMicroelectronics *****END OF FILE****/

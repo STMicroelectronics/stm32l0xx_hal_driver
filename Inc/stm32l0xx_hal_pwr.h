@@ -326,12 +326,6 @@ typedef struct
   */
 #define __HAL_PWR_PVD_EXTI_GENERATE_SWIT()  SET_BIT(EXTI->SWIER, PWR_EXTI_LINE_PVD)
 
-/**
-  * @brief Generate a Software interrupt on selected EXTI line.
-  * @retval None.
-  */
-#define __HAL_PWR_PVD_EXTI_GENERATE_SWIT()            SET_BIT(EXTI->SWIER, PWR_EXTI_LINE_PVD)
-
 #endif /* PWR_PVD_SUPPORT */
 
 /**

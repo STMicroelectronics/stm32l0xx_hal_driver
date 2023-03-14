@@ -59,7 +59,7 @@
  */
 #define __STM32L0xx_HAL_VERSION_MAIN   (0x01U) /*!< [31:24] main version */
 #define __STM32L0xx_HAL_VERSION_SUB1   (0x0AU) /*!< [23:16] sub1 version */
-#define __STM32L0xx_HAL_VERSION_SUB2   (0x05U) /*!< [15:8]  sub2 version */
+#define __STM32L0xx_HAL_VERSION_SUB2   (0x06U) /*!< [15:8]  sub2 version */
 #define __STM32L0xx_HAL_VERSION_RC     (0x00U) /*!< [7:0]  release candidate */
 #define __STM32L0xx_HAL_VERSION         ((__STM32L0xx_HAL_VERSION_MAIN << 24U)\
                                         |(__STM32L0xx_HAL_VERSION_SUB1 << 16U)\
@@ -350,7 +350,8 @@ HAL_StatusTypeDef HAL_SetTickFreq(HAL_TickFreqTypeDef Freq)
 
 /**
   * @brief Return tick frequency.
-  * @retval tick period in Hz
+  * @retval Tick frequency.
+  *         Value of @ref HAL_TickFreqTypeDef.
   */
 HAL_TickFreqTypeDef HAL_GetTickFreq(void)
 {
@@ -669,3 +670,6 @@ void HAL_SYSCFG_Disable_Lock_VREFINT(void)
 /**
   * @}
   */
+
+
+

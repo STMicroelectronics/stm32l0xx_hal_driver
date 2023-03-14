@@ -12,17 +12,6 @@
   *            + Option Bytes Programming
   *            + Interrupts management
   *    
-  ******************************************************************************
-  * @attention
-  *
-  * Copyright (c) 2016 STMicroelectronics.
-  * All rights reserved.
-  *
-  * This software is licensed under terms that can be found in the LICENSE file
-  * in the root directory of this software component.
-  * If no LICENSE file comes with this software, it is provided AS-IS.
-  *
-  ******************************************************************************
   @verbatim
   ==============================================================================
                ##### Flash peripheral Extended features  #####
@@ -45,7 +34,16 @@
   
   @endverbatim
   ******************************************************************************
-  */
+  * @attention
+  *
+  * Copyright (c) 2016 STMicroelectronics.
+  * All rights reserved.
+  *
+  * This software is licensed under terms that can be found in the LICENSE file in
+  * the root directory of this software component.
+  * If no LICENSE file comes with this software, it is provided AS-IS.
+  ******************************************************************************  
+  */ 
 
 /* Includes ------------------------------------------------------------------*/
 #include "stm32l0xx_hal.h"
@@ -61,8 +59,6 @@
 /** @addtogroup FLASH_Private_Variables
  * @{
  */
-/* Variables used for Erase pages under interruption*/
-extern FLASH_ProcessTypeDef pFlash;
 /**
   * @}
   */
@@ -98,7 +94,6 @@ extern FLASH_ProcessTypeDef pFlash;
 /** @defgroup FLASHEx_Private_Functions FLASHEx Private Functions
  * @{
  */
-void                      FLASH_PageErase(uint32_t PageAddress);
 #if defined(FLASH_OPTR_BFB2)
 static HAL_StatusTypeDef  FLASH_OB_BootConfig(uint8_t OB_BOOT);
 #endif /* FLASH_OPTR_BFB2 */
@@ -1265,3 +1260,4 @@ void FLASH_PageErase(uint32_t PageAddress)
 /**
   * @}
   */
+

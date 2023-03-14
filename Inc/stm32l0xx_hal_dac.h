@@ -228,7 +228,7 @@ typedef void (*pDAC_CallbackTypeDef)(DAC_HandleTypeDef *hdac);
   * @}
   */
 
-/** @defgroup DAC_data_alignement DAC data alignement
+/** @defgroup DAC_data_alignement DAC data alignment
   * @{
   */
 #define DAC_ALIGN_12B_R                    (0x00000000U)
@@ -365,19 +365,19 @@ CLEAR_BIT((__HANDLE__)->Instance->CR, (__INTERRUPT__))
   */
 
 /** @brief Set DHR12R1 alignment
-  * @param  __ALIGNMENT__ specifies the DAC alignement
+  * @param  __ALIGNMENT__ specifies the DAC alignment
   * @retval None
   */
 #define DAC_DHR12R1_ALIGNMENT(__ALIGNMENT__) ((0x00000008U) + (__ALIGNMENT__))
 
 /** @brief  Set DHR12R2 alignment
-  * @param  __ALIGNMENT__ specifies the DAC alignement
+  * @param  __ALIGNMENT__ specifies the DAC alignment
   * @retval None
   */
 #define DAC_DHR12R2_ALIGNMENT(__ALIGNMENT__) ((0x00000014U) + (__ALIGNMENT__))
 
 /** @brief  Set DHR12RD alignment
-  * @param  __ALIGNMENT__ specifies the DAC alignement
+  * @param  __ALIGNMENT__ specifies the DAC alignment
   * @retval None
   */
 #define DAC_DHR12RD_ALIGNMENT(__ALIGNMENT__) ((0x00000020U) + (__ALIGNMENT__))
@@ -481,3 +481,4 @@ uint32_t HAL_DAC_GetError(DAC_HandleTypeDef *hdac);
 #endif
 
 #endif /*__STM32L0xx_HAL_DAC_H */
+

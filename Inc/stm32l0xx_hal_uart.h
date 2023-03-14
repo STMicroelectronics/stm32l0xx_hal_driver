@@ -222,7 +222,7 @@ typedef struct __UART_HandleTypeDef
 
   UART_AdvFeatureInitTypeDef AdvancedInit;           /*!< UART Advanced Features initialization parameters */
 
-  uint8_t                  *pTxBuffPtr;              /*!< Pointer to UART Tx transfer Buffer */
+  const uint8_t            *pTxBuffPtr;              /*!< Pointer to UART Tx transfer Buffer */
 
   uint16_t                 TxXferSize;               /*!< UART Tx Transfer size              */
 
@@ -1609,3 +1609,4 @@ HAL_StatusTypeDef UART_Start_Receive_DMA(UART_HandleTypeDef *huart, uint8_t *pDa
 #endif
 
 #endif /* STM32L0xx_HAL_UART_H */
+

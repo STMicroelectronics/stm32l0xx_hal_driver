@@ -265,3 +265,4 @@ HAL_StatusTypeDef HAL_SMARTCARDEx_DisableReceiverTimeOut(SMARTCARD_HandleTypeDef
 #endif
 
 #endif /* STM32L0xx_HAL_SMARTCARD_EX_H */
+

@@ -157,7 +157,8 @@ HAL_UART_RxEventTypeTypeDef HAL_UARTEx_GetRxEventType(UART_HandleTypeDef *huart)
   * @param  __CLOCKSOURCE__ output variable.
   * @retval UART clocking source, written in __CLOCKSOURCE__.
   */
-#if defined (STM32L031xx) || defined (STM32L041xx) || defined (STM32L011xx) || defined (STM32L021xx) || defined (STM32L010xB) || defined (STM32L010x8) || defined (STM32L010x6) || defined (STM32L010x4)
+#if defined (STM32L031xx) || defined (STM32L041xx) || defined (STM32L011xx) || defined (STM32L021xx) \
+ || defined (STM32L010xB) || defined (STM32L010x8) || defined (STM32L010x6) || defined (STM32L010x4)
 #define UART_GETCLOCKSOURCE(__HANDLE__,__CLOCKSOURCE__)       \
   do {                                                        \
     if((__HANDLE__)->Instance == USART2)                      \
@@ -208,7 +209,8 @@ HAL_UART_RxEventTypeTypeDef HAL_UARTEx_GetRxEventType(UART_HandleTypeDef *huart)
     }                                                         \
   } while(0)
 
-#elif defined (STM32L051xx) || defined (STM32L052xx) || defined (STM32L053xx) || defined (STM32L062xx) || defined (STM32L063xx)
+#elif defined (STM32L051xx) || defined (STM32L052xx) || defined (STM32L053xx) || defined (STM32L062xx) \
+   || defined (STM32L063xx)
 
 #define UART_GETCLOCKSOURCE(__HANDLE__,__CLOCKSOURCE__)       \
   do {                                                        \
@@ -361,7 +363,8 @@ HAL_UART_RxEventTypeTypeDef HAL_UARTEx_GetRxEventType(UART_HandleTypeDef *huart)
       (__CLOCKSOURCE__) = UART_CLOCKSOURCE_UNDEFINED;         \
     }                                                         \
   } while(0)
-#endif /* (STM32L031xx) || (STM32L041xx) || (STM32L011xx) || (STM32L021xx) || (STM32L010xB) || (STM32L010x8) || (STM32L010x6) || (STM32L010x4)*/
+#endif /* (STM32L031xx) || (STM32L041xx) || (STM32L011xx) || (STM32L021xx) || (STM32L010xB) || 
+          (STM32L010x8) || (STM32L010x6) || (STM32L010x4)*/
 
 
 /** @brief  Report the UART mask to apply to retrieve the received data
@@ -450,3 +453,4 @@ HAL_UART_RxEventTypeTypeDef HAL_UARTEx_GetRxEventType(UART_HandleTypeDef *huart)
 #endif
 
 #endif /* STM32L0xx_HAL_UART_EX_H */
+

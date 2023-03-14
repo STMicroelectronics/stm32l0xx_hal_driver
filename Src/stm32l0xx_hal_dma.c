@@ -289,7 +289,7 @@ HAL_StatusTypeDef HAL_DMA_DeInit(DMA_HandleTypeDef *hdma)
   *               the configuration information for the specified DMA Channel.
   * @param  SrcAddress The source memory Buffer address
   * @param  DstAddress The destination memory Buffer address
-  * @param  DataLength The length of data to be transferred from source to destination
+  * @param  DataLength The amount of data items to be transferred from source to destination
   * @retval HAL status
   */
 HAL_StatusTypeDef HAL_DMA_Start(DMA_HandleTypeDef *hdma, uint32_t SrcAddress, uint32_t DstAddress, uint32_t DataLength)
@@ -332,7 +332,7 @@ HAL_StatusTypeDef HAL_DMA_Start(DMA_HandleTypeDef *hdma, uint32_t SrcAddress, ui
   *               the configuration information for the specified DMA Channel.
   * @param  SrcAddress The source memory Buffer address
   * @param  DstAddress The destination memory Buffer address
-  * @param  DataLength The length of data to be transferred from source to destination
+  * @param  DataLength The amount of data items to be transferred from source to destination
   * @retval HAL status
   */
 HAL_StatusTypeDef HAL_DMA_Start_IT(DMA_HandleTypeDef *hdma, uint32_t SrcAddress, uint32_t DstAddress, uint32_t DataLength)
@@ -665,9 +665,9 @@ void HAL_DMA_IRQHandler(DMA_HandleTypeDef *hdma)
   * @brief  Register callbacks
   * @param  hdma                 pointer to a DMA_HandleTypeDef structure that contains
   *                               the configuration information for the specified DMA Channel.
-  * @param  CallbackID           User Callback identifer
+  * @param  CallbackID           User Callback identifier
   *                               a HAL_DMA_CallbackIDTypeDef ENUM as parameter.
-  * @param  pCallback            pointer to private callbacsk function which has pointer to
+  * @param  pCallback            pointer to private callback function which has pointer to
   *                               a DMA_HandleTypeDef structure as parameter.
   * @retval HAL status
   */
@@ -718,7 +718,7 @@ HAL_StatusTypeDef HAL_DMA_RegisterCallback(DMA_HandleTypeDef *hdma, HAL_DMA_Call
   * @brief  UnRegister callbacks
   * @param  hdma                 pointer to a DMA_HandleTypeDef structure that contains
   *                               the configuration information for the specified DMA Channel.
-  * @param  CallbackID           User Callback identifer
+  * @param  CallbackID           User Callback identifier
   *                               a HAL_DMA_CallbackIDTypeDef ENUM as parameter.
   * @retval HAL status
   */
@@ -835,7 +835,7 @@ uint32_t HAL_DMA_GetError(DMA_HandleTypeDef *hdma)
   *                     the configuration information for the specified DMA Channel.
   * @param  SrcAddress The source memory Buffer address
   * @param  DstAddress The destination memory Buffer address
-  * @param  DataLength The length of data to be transferred from source to destination
+  * @param  DataLength The amount of data items to be transferred from source to destination
   * @retval HAL status
   */
 static void DMA_SetConfig(DMA_HandleTypeDef *hdma, uint32_t SrcAddress, uint32_t DstAddress, uint32_t DataLength)
@@ -882,3 +882,5 @@ static void DMA_SetConfig(DMA_HandleTypeDef *hdma, uint32_t SrcAddress, uint32_t
 /**
   * @}
   */
+
+
