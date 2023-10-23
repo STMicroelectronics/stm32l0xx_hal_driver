@@ -3647,10 +3647,13 @@ HAL_StatusTypeDef HAL_TIM_Encoder_Stop_DMA(TIM_HandleTypeDef *htim, uint32_t Cha
   */
 void HAL_TIM_IRQHandler(TIM_HandleTypeDef *htim)
 {
+  uint32_t itsource = htim->Instance->DIER;
+  uint32_t itflag   = htim->Instance->SR;
+
   /* Capture compare 1 event */
-  if (__HAL_TIM_GET_FLAG(htim, TIM_FLAG_CC1) != RESET)
+  if ((itflag & (TIM_FLAG_CC1)) == (TIM_FLAG_CC1))
   {
-    if (__HAL_TIM_GET_IT_SOURCE(htim, TIM_IT_CC1) != RESET)
+    if ((itsource & (TIM_IT_CC1)) == (TIM_IT_CC1))
     {
       {
         __HAL_TIM_CLEAR_IT(htim, TIM_IT_CC1);
@@ -3681,9 +3684,9 @@ void HAL_TIM_IRQHandler(TIM_HandleTypeDef *htim)
     }
   }
   /* Capture compare 2 event */
-  if (__HAL_TIM_GET_FLAG(htim, TIM_FLAG_CC2) != RESET)
+  if ((itflag & (TIM_FLAG_CC2)) == (TIM_FLAG_CC2))
   {
-    if (__HAL_TIM_GET_IT_SOURCE(htim, TIM_IT_CC2) != RESET)
+    if ((itsource & (TIM_IT_CC2)) == (TIM_IT_CC2))
     {
       __HAL_TIM_CLEAR_IT(htim, TIM_IT_CC2);
       htim->Channel = HAL_TIM_ACTIVE_CHANNEL_2;
@@ -3711,9 +3714,9 @@ void HAL_TIM_IRQHandler(TIM_HandleTypeDef *htim)
     }
   }
   /* Capture compare 3 event */
-  if (__HAL_TIM_GET_FLAG(htim, TIM_FLAG_CC3) != RESET)
+  if ((itflag & (TIM_FLAG_CC3)) == (TIM_FLAG_CC3))
   {
-    if (__HAL_TIM_GET_IT_SOURCE(htim, TIM_IT_CC3) != RESET)
+    if ((itsource & (TIM_IT_CC3)) == (TIM_IT_CC3))
     {
       __HAL_TIM_CLEAR_IT(htim, TIM_IT_CC3);
       htim->Channel = HAL_TIM_ACTIVE_CHANNEL_3;
@@ -3741,9 +3744,9 @@ void HAL_TIM_IRQHandler(TIM_HandleTypeDef *htim)
     }
   }
   /* Capture compare 4 event */
-  if (__HAL_TIM_GET_FLAG(htim, TIM_FLAG_CC4) != RESET)
+  if ((itflag & (TIM_FLAG_CC4)) == (TIM_FLAG_CC4))
   {
-    if (__HAL_TIM_GET_IT_SOURCE(htim, TIM_IT_CC4) != RESET)
+    if ((itsource & (TIM_IT_CC4)) == (TIM_IT_CC4))
     {
       __HAL_TIM_CLEAR_IT(htim, TIM_IT_CC4);
       htim->Channel = HAL_TIM_ACTIVE_CHANNEL_4;
@@ -3771,9 +3774,9 @@ void HAL_TIM_IRQHandler(TIM_HandleTypeDef *htim)
     }
   }
   /* TIM Update event */
-  if (__HAL_TIM_GET_FLAG(htim, TIM_FLAG_UPDATE) != RESET)
+  if ((itflag & (TIM_FLAG_UPDATE)) == (TIM_FLAG_UPDATE))
   {
-    if (__HAL_TIM_GET_IT_SOURCE(htim, TIM_IT_UPDATE) != RESET)
+    if ((itsource & (TIM_IT_UPDATE)) == (TIM_IT_UPDATE))
     {
       __HAL_TIM_CLEAR_IT(htim, TIM_IT_UPDATE);
 #if (USE_HAL_TIM_REGISTER_CALLBACKS == 1)
@@ -3784,9 +3787,9 @@ void HAL_TIM_IRQHandler(TIM_HandleTypeDef *htim)
     }
   }
   /* TIM Trigger detection event */
-  if (__HAL_TIM_GET_FLAG(htim, TIM_FLAG_TRIGGER) != RESET)
+  if ((itflag & (TIM_FLAG_TRIGGER)) == (TIM_FLAG_TRIGGER))
   {
-    if (__HAL_TIM_GET_IT_SOURCE(htim, TIM_IT_TRIGGER) != RESET)
+    if ((itsource & (TIM_IT_TRIGGER)) == (TIM_IT_TRIGGER))
     {
       __HAL_TIM_CLEAR_IT(htim, TIM_IT_TRIGGER);
 #if (USE_HAL_TIM_REGISTER_CALLBACKS == 1)
