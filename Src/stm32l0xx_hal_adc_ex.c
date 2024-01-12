@@ -110,6 +110,9 @@ HAL_StatusTypeDef HAL_ADCEx_Calibration_Start(ADC_HandleTypeDef *hadc, uint32_t 
   /* Check the parameters */
   assert_param(IS_ADC_ALL_INSTANCE(hadc->Instance));
 
+  /* Prevent unused argument(s) compilation warning */
+  UNUSED(SingleDiff);
+
   /* Process locked */
   __HAL_LOCK(hadc);
 
@@ -192,6 +195,9 @@ uint32_t HAL_ADCEx_Calibration_GetValue(ADC_HandleTypeDef *hadc, uint32_t Single
   assert_param(IS_ADC_ALL_INSTANCE(hadc->Instance));
   assert_param(IS_ADC_SINGLE_DIFFERENTIAL(SingleDiff));
 
+  /* Prevent unused argument(s) compilation warning */
+  UNUSED(SingleDiff);
+
   /* Return the ADC calibration value */
   return ((hadc->Instance->CALFACT) & 0x0000007FU);
 }
@@ -213,6 +219,9 @@ HAL_StatusTypeDef HAL_ADCEx_Calibration_SetValue(ADC_HandleTypeDef *hadc, uint32
   assert_param(IS_ADC_ALL_INSTANCE(hadc->Instance));
   assert_param(IS_ADC_SINGLE_DIFFERENTIAL(SingleDiff));
   assert_param(IS_ADC_CALFACT(CalibrationFactor));
+
+  /* Prevent unused argument(s) compilation warning */
+  UNUSED(SingleDiff);
 
   /* Process locked */
   __HAL_LOCK(hadc);
