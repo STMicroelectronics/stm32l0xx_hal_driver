@@ -236,6 +236,9 @@ HAL_StatusTypeDef HAL_FLASH_Program(uint32_t TypeProgram, uint32_t Address, uint
   assert_param(IS_FLASH_TYPEPROGRAM(TypeProgram));
   assert_param(IS_FLASH_PROGRAM_ADDRESS(Address));
 
+  /* Prevent unused argument(s) compilation warning */
+  UNUSED(TypeProgram);
+
   /* Wait for last operation to be completed */
   status = FLASH_WaitForLastOperation(FLASH_TIMEOUT_VALUE);
   
@@ -277,6 +280,9 @@ HAL_StatusTypeDef HAL_FLASH_Program_IT(uint32_t TypeProgram, uint32_t Address, u
   /* Check the parameters */
   assert_param(IS_FLASH_TYPEPROGRAM(TypeProgram));
   assert_param(IS_FLASH_PROGRAM_ADDRESS(Address));
+
+  /* Prevent unused argument(s) compilation warning */
+  UNUSED(TypeProgram);
 
   /* Enable End of FLASH Operation and Error source interrupts */
   __HAL_FLASH_ENABLE_IT(FLASH_IT_EOP | FLASH_IT_ERR);
