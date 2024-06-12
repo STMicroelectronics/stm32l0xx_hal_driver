@@ -255,11 +255,11 @@ HAL_StatusTypeDef HAL_ADCEx_Calibration_SetValue(ADC_HandleTypeDef *hadc, uint32
 
 /**
   * @brief  Enables the buffer of Vrefint for the ADC, required when device is in mode low-power (low-power run, low-power sleep or stop mode)
-  *         This function must be called before function HAL_ADC_Init()
-  *         (in case of previous ADC operations: function HAL_ADC_DeInit() must be called first)
+  *         However ADC is not functional in low-power mode, therefore these functions is not targeted for ADC (obsolete) 
   *         For more details on procedure and buffer current consumption, refer to device reference manual.
   * @note   This is functional only if the LOCK is not set.
-  * @note   This API is obsolete. This configuration is done in HAL_ADC_ConfigChannel().
+  * @note   This API is obsolete. This equivalent configuration is done in HAL_ADC_ConfigChannel().
+            bit fields in ADC_CCR and SYSCFG_CFGR3 control the same signals to VREFINT and TempSensor buffers
   * @retval None
   */
 HAL_StatusTypeDef HAL_ADCEx_EnableVREFINT(void)
@@ -291,7 +291,8 @@ HAL_StatusTypeDef HAL_ADCEx_EnableVREFINT(void)
 /**
   * @brief Disables the Buffer Vrefint for the ADC.
   * @note This is functional only if the LOCK is not set.
-  * @note This API is obsolete. This configuration is done in HAL_ADC_ConfigChannel().
+  * @note This API is obsolete. This equivalent configuration is done in HAL_ADC_ConfigChannel().
+          bit fields in ADC_CCR and SYSCFG_CFGR3 control the same signals to VREFINT and TempSensor buffers.
   * @retval None
   */
 void HAL_ADCEx_DisableVREFINT(void)
@@ -301,12 +302,12 @@ void HAL_ADCEx_DisableVREFINT(void)
 }
 
 /**
-  * @brief  Enables the buffer of temperature sensor for the ADC, required when device is in mode low-power (low-power run, low-power sleep or stop mode)
-  *         This function must be called before function HAL_ADC_Init()
-  *         (in case of previous ADC operations: function HAL_ADC_DeInit() must be called first)
+  * @brief  Enables the buffer of temperature sensor, when device is in mode low-power (low-power run, low-power sleep or stop mode)
+  *         However ADC is not functional in low-power mode, therefore these functions is not targeted for ADC (obsolete) 
   *         For more details on procedure and buffer current consumption, refer to device reference manual.
   * @note   This is functional only if the LOCK is not set.
-  * @note   This API is obsolete. This configuration is done in HAL_ADC_ConfigChannel().
+  * @note   This API is obsolete. This equivalent configuration is done in HAL_ADC_ConfigChannel().
+            bit fields in ADC_CCR and SYSCFG_CFGR3 control the same signals to VREFINT and TempSensor buffers
   * @retval None
   */
 HAL_StatusTypeDef HAL_ADCEx_EnableVREFINTTempSensor(void)
@@ -338,7 +339,8 @@ HAL_StatusTypeDef HAL_ADCEx_EnableVREFINTTempSensor(void)
 /**
   * @brief Disables the VREFINT and Sensor for the ADC.
   * @note This is functional only if the LOCK is not set.
-  * @note This API is obsolete. This configuration is done in HAL_ADC_ConfigChannel().
+  * @note This API is obsolete. This equivalent configuration is done in HAL_ADC_ConfigChannel().
+          bit fields in ADC_CCR and SYSCFG_CFGR3 control the same signals to VREFINT and TempSensor buffers.
   * @retval None
   */
 void HAL_ADCEx_DisableVREFINTTempSensor(void)
