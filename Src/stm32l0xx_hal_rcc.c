@@ -1242,17 +1242,17 @@ uint32_t HAL_RCC_GetSysClockFreq(void)
       if (__HAL_RCC_GET_PLL_OSCSOURCE() != RCC_PLLSOURCE_HSI)
       {
         /* HSE used as PLL clock source */
-        pllvco = (uint32_t)(((uint64_t)HSE_VALUE * (uint64_t)pllm) / (uint64_t)plld);
+        pllvco = (uint32_t)((HSE_VALUE * pllm) / plld);
       }
       else
       {
         if ((RCC->CR & RCC_CR_HSIDIVF) != 0U)
         {
-          pllvco = (uint32_t)((((uint64_t)(HSI_VALUE >> 2)) * (uint64_t)pllm) / (uint64_t)plld);
+          pllvco = (uint32_t)((((HSI_VALUE >> 2)) * pllm) / plld);
         }
         else
         {
-         pllvco = (uint32_t)(((uint64_t)HSI_VALUE * (uint64_t)pllm) / (uint64_t)plld);
+         pllvco = (uint32_t)((HSI_VALUE * pllm) / plld);
         }
       }
       sysclockfreq = pllvco;
